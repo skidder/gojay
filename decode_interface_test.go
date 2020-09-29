@@ -129,7 +129,12 @@ func TestDecodeInterfaceBasic(t *testing.T) {
 			expectedResult: interface{}("\"hola amigos!"),
 			err:            false,
 		},
-
+		{
+			name:           "escaped-string-multiple-slashes",
+			json:           `"Escaped string with multiple slashes:httpCode\":404,\"url\":\"http:\\\/\\\/example.com\\\/foo\",\"code\":10,\"severity\":\"error\"}"`,
+			expectedResult: interface{}("Escaped string with multiple slashes:httpCode\":404,\"url\":\"http:\\/\\/example.com\\/foo\",\"code\":10,\"severity\":\"error\"}"),
+			err:            false,
+		},
 	}
 
 	for _, testCase := range testCases {
